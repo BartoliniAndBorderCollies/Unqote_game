@@ -209,4 +209,5 @@ public class MainActivity extends AppCompatActivity {
                     totalQuestions;
         }
     }
-}
+}//TODO: fix the bug if player submits no answer
+//TODO: add option to close the app
