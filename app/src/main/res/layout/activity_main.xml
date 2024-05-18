@@ -28,6 +28,7 @@
         android:text="99"
         android:textSize="48sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -37,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Questions remaining"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/questionsLeft"
         app:layout_constraintStart_toEndOf="@+id/questionsLeft"
         app:layout_constraintTop_toTopOf="@+id/questionsLeft" />
@@ -120,6 +122,8 @@
         android:fontFamily="sans-serif-thin"
         android:text="Famous advice from an iconic mentor. Which fictional character really imparted this bit of sage wisdom?"
         android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:typeface="sans"
         app:layout_constraintBottom_toTopOf="@+id/linearLayoutTop"
         app:layout_constraintEnd_toEndOf="parent"
