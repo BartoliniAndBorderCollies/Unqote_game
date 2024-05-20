@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
@@ -174,6 +175,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void onAnswerSubmission() {
         Question currentQuestion = getCurrentQuestion();
+
+        if (currentQuestion.getPlayerAnswer() == -1) {
+            // Show a Toast message and return
+            Toast.makeText(getApplicationContext(), "Select the answer!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (currentQuestion.isCorrect())
             totalCorrect++;
         questions.remove(currentQuestion);
@@ -185,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
             gameOverDialogBuilder.setTitle("OH NO!!! THE GAME IS OVER!!");
             gameOverDialogBuilder.setMessage(gameOverMessage);
 
-           // AlertDialog can present positive, neutral, and negative buttons (indicating their position from left-to-right or top-to-down, depending on the device).
+            // AlertDialog can present positive, neutral, and negative buttons (indicating their position from left-to-right or top-to-down, depending on the device).
             gameOverDialogBuilder.setPositiveButton("Play Again!", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -209,5 +217,5 @@ public class MainActivity extends AppCompatActivity {
                     totalQuestions;
         }
     }
-}//TODO: fix the bug if player submits no answer
-//TODO: add option to close the app
+}
+
