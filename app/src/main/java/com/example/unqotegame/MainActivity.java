@@ -103,9 +103,21 @@ public class MainActivity extends AppCompatActivity {
                 "difficult advice to follow — who actually said it?", "Martin Luther King Jr",
                 "Mother Teresa", "Fred Rogers", "Oprah Winrey", 1);
 
+        Question question3 = new Question(R.drawable.img_quote_3, "Bla", "bla",
+                "Bla", "Bla", "Bla", 1);
+
+        Question question4 = new Question(R.drawable.img_quote_4, "Bla", "bla",
+                "Bla", "Bla", "Bla", 1);
+
+        Question question5 = new Question(R.drawable.img_quote_5, "Bla", "bla",
+                "Bla", "Bla", "Bla", 1);
+
         questions.add(question0);
         questions.add(question1);
         questions.add(question2);
+        questions.add(question3);
+        questions.add(question4);
+        questions.add(question5);
 
         totalCorrect = 0;
         totalQuestions = questions.size();
