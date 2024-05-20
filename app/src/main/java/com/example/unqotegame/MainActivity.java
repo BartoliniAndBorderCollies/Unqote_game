@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     int currentQuestionIndex;
     int totalCorrect;
     int totalQuestions;
+    int questionsPerRound;
+    int totalQuestionsPerRound = 3;
     List<Question> questions;
     ImageView questionImageView;
     TextView questionTextView;
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void startNewGame() {
         questions = new ArrayList<>();
+        questionsPerRound = 3;
 
         Question question0 = new Question(R.drawable.img_quote_0, "Pretty good advice, " +
                 "and perhaps a scientist did say it… Who actually did??", "Albert Einstein ",
@@ -123,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         totalQuestions = questions.size();
 
         Question firstQuestion = chooseNewQuestion();
-        displayQuestionsRemaining(questions.size());
+        displayQuestionsRemaining(questionsPerRound);
 
         displayQuestion(firstQuestion);
     }
@@ -197,9 +200,10 @@ public class MainActivity extends AppCompatActivity {
         if (currentQuestion.isCorrect())
             totalCorrect++;
         questions.remove(currentQuestion);
-        displayQuestionsRemaining(questions.size());
-        if (questions.isEmpty()) {
-            String gameOverMessage = getGameOverMessage(totalCorrect, totalQuestions);
+        questionsPerRound--;
+        displayQuestionsRemaining(questionsPerRound);
+        if (questions.size() == 3) {
+            String gameOverMessage = getGameOverMessage(totalCorrect);
             AlertDialog.Builder gameOverDialogBuilder = new AlertDialog.Builder(MainActivity.this);
             gameOverDialogBuilder.setCancelable(false);
             gameOverDialogBuilder.setTitle("OH NO!!! THE GAME IS OVER!!");
@@ -220,14 +224,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private String getGameOverMessage(int correct, int totalQuestions) {
-        if (correct == totalQuestions) {
-            return "Well done! You answered correctly for all questions!!!";
-        } else {
-            return "Try again! " +
-                    "You answered correctly on: " + correct + " from total of: " +
-                    totalQuestions;
-        }
+    private String getGameOverMessage(int correct) {
+        return "You answered correctly on: " + correct + " from total of: " + totalQuestionsPerRound;
     }
 }
 
